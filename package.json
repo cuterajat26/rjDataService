@@ -1,0 +1,43 @@
+{
+"name": "rjdataService",
+"version": "1.0.0",
+"description": "Angular js utility service for data querying and storages",
+"keywords": [
+"angular",
+"dataService"
+],
+"homepage": "https://github.com/cuterajat26",
+"bugs": "https://github.com/chrisfelix82/dojoexpress/issues",
+"author": {
+"name": "Rajat Talwar",
+"email": "cuterajat26@gmail.com",
+"url": "https://github.com/cuterajat26"
+},
+"main": "web-app.js",
+"repository": {
+"type": "git",
+"url": "https://gitlab.com/cuterajat26/dataService.git"
+},
+"devDependencies": {
+"grunt": "^0.4.5",
+"grunt-contrib-clean": "^0.6.0",
+"grunt-contrib-concat": "^0.5.1",
+"grunt-contrib-copy": "^0.8.0",
+"grunt-contrib-uglify": "^0.8.0",
+"grunt-contrib-watch": "^0.6.1",
+"grunt-karma": "^0.10.1",
+"jasmine-core": "^2.2.0",
+"karma": "^0.12.31",
+"karma-chrome-launcher": "^0.1.7",
+"karma-firefox-launcher": "^0.1.4",
+"karma-jasmine": "^0.3.5",
+"karma-phantomjs-launcher": "^0.1.4",
+"load-grunt-tasks": "^3.1.0"
+},
+"engines": {
+"node": ">=0.8.0",
+"npm": ">=1.2.10"
+},
+"license":"MIT"
+}
+

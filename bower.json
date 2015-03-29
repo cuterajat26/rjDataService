@@ -1,0 +1,23 @@
+{
+  "name": "rjdataService",
+  "version": "0.0.0",
+  "authors": [
+    "Rajat Talwar <cuterajat26@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "www/lib",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "angular-mocks": "~1.3.13",
+    "angular": "~1.3.13",
+    "angular-resource": "~1.3.13",
+    "ngCordova": "~0.1.12-alpha"
+  }
+}
