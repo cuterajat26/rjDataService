@@ -11,8 +11,14 @@ Feature Overview
 * Angular service for WebSql
 * Angular service for parse sdk
 
+Bower Install
+----------------
+bower install cuterajat26/rjDataService
+
+
 Documentation - TODO
 ----------------
+
 
 
 MIT License
