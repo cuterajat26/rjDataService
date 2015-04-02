@@ -1,6 +1,6 @@
 {
 "name": "rjdataService",
-"version": "1.0.0",
+"version": "1.0.1",
 "description": "Angular js utility service for data querying and storages",
 "keywords": [
 "angular",
