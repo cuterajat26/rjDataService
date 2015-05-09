@@ -6,11 +6,11 @@ angular.module('rijit.dataService', ['ngResource']);
 
         return {
             data:{
-                application_id : "q532TnfWqiKVUHcyixzuqzJ5R5nVqmHUuJnz9TJ7",
-                api_key : "ov5hMAJBUDAPc3hZ4DE8NRi1i2LDcGLksHkTvwZg",
-                file_api_key: "S0xp8GIPHlYY7UoWlTnmVGsu7GfkET9yh4Wu4dX3",
+                application_id : "parse_app_id",
+                api_key : "parse_api_key",
+                file_api_key: "parse_file_api_key",
                 fileUploadPath : "https://api.parse.com/1/files/",
-                dbName :'shaadiApp'
+                dbName :'myapp'
         }};
 
 
@@ -372,21 +372,22 @@ angular.module('rijit.dataService', ['ngResource']);
    angular.module('rijit.dataService').factory('RJEvented', [ RJEvented]);
 
 }());
+//NOTE:- Dependency -  cordova plugin add org.apache.cordova.file-transfer
+
 (function () {
     'use strict';
 
 
-    function RJFileTransfer($q) {
+    function RJFileTransfer($q, $cordovaFileTransfer) {
 
         var FactoryConstructor = function (config) {
-            this.fileTransferObject = new FileTransfer();
         };
 
         angular.extend(FactoryConstructor.prototype, {
 
             upload: function (fileUrl, targetUrl, options) {
                 var def = $q.defer(),responseObj;
-                this.fileTransferObject.upload(fileUrl, encodeURI(targetUrl),
+                $cordovaFileTransfer.upload( encodeURI(targetUrl),fileUrl,this._getFileUploadOptions(options)).then(
                     function (r) {
                         try{
                             responseObj = JSON.parse(r.response);
@@ -396,11 +397,11 @@ angular.module('rijit.dataService', ['ngResource']);
                         }
                     }, function (error) {
                         def.reject(error);
-                    }, this._getFileUploadOptions(options));
+                    });
                 return def.promise;
             },
             _getFileUploadOptions:function(optionsObj){
-                var options = new FileUploadOptions();
+                var options = {};
                 angular.extend(options,optionsObj);
                 return options;
             }
@@ -410,7 +411,7 @@ angular.module('rijit.dataService', ['ngResource']);
         return FactoryConstructor;
     }
 
-    angular.module('rijit.dataService').factory('RJFileTransfer', ['$q', RJFileTransfer]);
+    angular.module('rijit.dataService').factory('RJFileTransfer', ['$q','$cordovaFileTransfer', RJFileTransfer]);
 
 }());
 (function() {
@@ -1322,7 +1323,7 @@ angular.module('rijit.dataService', ['ngResource']);
             },
 
             getParseUserStore:function(){
-                var collection =  RJParse.User;
+                var collection =  RJParse.User || null;
                 var parseInterface =  new RJParseInterface({
                     PARSE: RJParse,
                     collection: collection
@@ -1940,7 +1941,7 @@ angular.module('rijit.dataService', ['ngResource']);
 (function () {
     'use strict';
 
-    var RJParse = window.Parse || null;
+    var RJParse = window.Parse || {};
     angular.module('rijit.dataService').value('RJParse', RJParse);
 
 }());
