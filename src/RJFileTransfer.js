@@ -1,18 +1,19 @@
+//NOTE:- Dependency -  cordova plugin add org.apache.cordova.file-transfer
+
 (function () {
     'use strict';
 
 
-    function RJFileTransfer($q) {
+    function RJFileTransfer($q, $cordovaFileTransfer) {
 
         var FactoryConstructor = function (config) {
-            this.fileTransferObject = new FileTransfer();
         };
 
         angular.extend(FactoryConstructor.prototype, {
 
             upload: function (fileUrl, targetUrl, options) {
                 var def = $q.defer(),responseObj;
-                this.fileTransferObject.upload(fileUrl, encodeURI(targetUrl),
+                $cordovaFileTransfer.upload( encodeURI(targetUrl),fileUrl,this._getFileUploadOptions(options)).then(
                     function (r) {
                         try{
                             responseObj = JSON.parse(r.response);
@@ -22,11 +23,11 @@
                         }
                     }, function (error) {
                         def.reject(error);
-                    }, this._getFileUploadOptions(options));
+                    });
                 return def.promise;
             },
             _getFileUploadOptions:function(optionsObj){
-                var options = new FileUploadOptions();
+                var options = {};
                 angular.extend(options,optionsObj);
                 return options;
             }
@@ -36,6 +37,6 @@
         return FactoryConstructor;
     }
 
-    angular.module('rijit.dataService').factory('RJFileTransfer', ['$q', RJFileTransfer]);
+    angular.module('rijit.dataService').factory('RJFileTransfer', ['$q','$cordovaFileTransfer', RJFileTransfer]);
 
 }());
