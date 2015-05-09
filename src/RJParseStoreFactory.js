@@ -17,7 +17,7 @@
             },
 
             getParseUserStore:function(){
-                var collection =  RJParse.User;
+                var collection =  RJParse.User || null;
                 var parseInterface =  new RJParseInterface({
                     PARSE: RJParse,
                     collection: collection

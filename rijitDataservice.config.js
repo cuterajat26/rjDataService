@@ -24,6 +24,7 @@ module.exports = function(config) {
       'src/dataService.js',
       'src/services.js',
       {pattern:'src/**/*.js'},
+      {pattern:'test/lib/*.js'},
       {pattern:'test/*.js'}
     ],
 

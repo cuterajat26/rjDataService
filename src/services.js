@@ -9,7 +9,7 @@
 (function () {
     'use strict';
 
-    var RJParse = window.Parse || null;
+    var RJParse = window.Parse || {};
     angular.module('rijit.dataService').value('RJParse', RJParse);
 
 }());

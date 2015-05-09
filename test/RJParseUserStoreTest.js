@@ -5,6 +5,7 @@ describe("RJParseUserStoreTest",function(){
     dataSource = {
     };
 
+
     //load the module which needs to be tested
     beforeEach(angular.mock.module("rijit.dataService"));
 
